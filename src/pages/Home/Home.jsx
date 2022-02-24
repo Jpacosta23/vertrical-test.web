@@ -1,6 +1,6 @@
 import "./Home.css";
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { getAllPhotos } from "../../services/photo.service";
 
 const Home = () => {
@@ -15,7 +15,7 @@ const Home = () => {
         }
     };
     const handleRedirect = (photo) => {
-        navigate(`/photo/${photo.id}`, photo);
+        navigate(`/photo/${photo.id}`, { state: photo });
     };
     useEffect(() => {
         getPhotos();
@@ -31,15 +31,27 @@ const Home = () => {
                                       <img
                                           src={photo.photo}
                                           alt={photo.short_description}
-                                          width="100    "
+                                          width="200"
+                                          height="250"
+                                          className="photo-image"
                                       />
                                   </div>
-                                  <button
-                                      className="btn-redirect"
-                                      onClick={() => handleRedirect(photo)}
-                                  >
-                                      {photo.title}
-                                  </button>
+                                  <div className="description-container">
+                                      <button
+                                          className="btn-redirect"
+                                          onClick={() => handleRedirect(photo)}
+                                      >
+                                          {photo.title}
+                                      </button>
+                                      <p>{photo.short_description}</p>
+                                      <button
+                                          type="button"
+                                          className="btn-photo"
+                                          onClick={() => handleRedirect(photo)}
+                                      >
+                                          Go to {photo.title}
+                                      </button>
+                                  </div>
                               </div>
                           );
                       })
