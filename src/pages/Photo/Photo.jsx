@@ -1,13 +1,22 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Photo.css";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation, useParams } from "react-router-dom";
 import goBack from "../../assets/Images/icons8-go-back-48.png";
+import { getPhotosById } from "../../context/actions";
+import { useAppState, useAppDispatch } from "../../context/store";
+
 const Photo = () => {
+    const dispatch = useAppDispatch();
+    const { currentPhoto } = useAppState();
     const navigate = useNavigate();
-    const location = useLocation();
+    const { id } = useParams();
     const handleReturn = () => {
         navigate("/");
     };
+
+    useEffect(() => {
+        getPhotosById(dispatch, id);
+    }, [id]);
 
     return (
         <>
@@ -19,9 +28,12 @@ const Photo = () => {
             </header>
             <div className="container">
                 <div className="card-container">
-                    <h1>{location.state.title}</h1>
-                    <img src={location.state.photo} height="1000" />
-                    <p>{location.state.description}</p>
+                    <h1>{currentPhoto ? currentPhoto.title : null}</h1>
+                    <img
+                        src={currentPhoto ? currentPhoto.photo : null}
+                        height="1000"
+                    />
+                    <p>{currentPhoto ? currentPhoto.description : null}</p>
                 </div>
             </div>
         </>

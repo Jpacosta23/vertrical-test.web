@@ -2,8 +2,18 @@ const API_URL_BASE = process.env.REACT_APP_API_URL;
 
 const getAllPhotos = async () => {
     try {
-        console.log(API_URL_BASE);
         const RES = await fetch(`${API_URL_BASE}/photo`);
+        const data = await RES.json();
+
+        return data;
+    } catch (err) {
+        throw Error("something went wrong");
+    }
+};
+
+const getPhotoById = async (id) => {
+    try {
+        const RES = await fetch(`${API_URL_BASE}/photo/${id}`);
         const data = await RES.json();
 
         return data;
@@ -23,7 +33,7 @@ const getPhotosByTitle = async (title) => {
             },
         };
 
-        const response = await fetch(`${API_URL_BASE}/api/photo`, payload);
+        const response = await fetch(`${API_URL_BASE}/photo`, payload);
         const newUser = await response.json();
 
         return newUser;
@@ -32,4 +42,4 @@ const getPhotosByTitle = async (title) => {
     }
 };
 
-export { getAllPhotos, getPhotosByTitle };
+export { getAllPhotos, getPhotosByTitle, getPhotoById };

@@ -1,24 +1,18 @@
 import "./Home.css";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { getAllPhotos } from "../../services/photo.service";
+import { getPhotos } from "../../context/actions";
+import { useAppState, useAppDispatch } from "../../context/store";
 
 const Home = () => {
-    const [photos, setPhotos] = useState([]);
+    const dispatch = useAppDispatch();
+    const { photos } = useAppState();
     const navigate = useNavigate();
-    const getPhotos = async () => {
-        try {
-            const data = await getAllPhotos();
-            setPhotos(data);
-        } catch (error) {
-            throw Error("something went wrong");
-        }
-    };
     const handleRedirect = (photo) => {
-        navigate(`/photo/${photo.id}`, { state: photo });
+        navigate(`/photo/${photo.id}`);
     };
     useEffect(() => {
-        getPhotos();
+        getPhotos(dispatch);
     }, []);
     return (
         <div className="container">
