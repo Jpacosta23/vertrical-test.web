@@ -1,9 +1,9 @@
-import React from "react";
+import React, { createContext, useReducer, useContext } from "react";
 
 import { GET_PHOTOS, SET_LOADING, GET_PHOTO } from "./constants";
 
-const AppStateContext = React.createContext();
-const AppDispatchContext = React.createContext();
+const AppStateContext = createContext();
+const AppDispatchContext = createContext();
 
 const initialState = {
     photos: [],
@@ -39,7 +39,7 @@ function AppReducer(state, action) {
 
 /* eslint-disable */
 function AppProvider({ children }) {
-    const [state, dispatch] = React.useReducer(AppReducer, initialState);
+    const [state, dispatch] = useReducer(AppReducer, initialState);
     return (
         <AppStateContext.Provider value={state}>
             <AppDispatchContext.Provider value={dispatch}>
@@ -50,7 +50,7 @@ function AppProvider({ children }) {
 }
 
 function useAppState() {
-    const context = React.useContext(AppStateContext);
+    const context = useContext(AppStateContext);
     if (context === undefined) {
         throw new Error("useAppState must be used within a AppProvider");
     }
@@ -58,7 +58,7 @@ function useAppState() {
 }
 
 function useAppDispatch() {
-    const context = React.useContext(AppDispatchContext);
+    const context = useContext(AppDispatchContext);
     if (context === undefined) {
         throw new Error("useAppDispatch must be used within a AppProvider");
     }

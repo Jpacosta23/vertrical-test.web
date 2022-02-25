@@ -7,7 +7,7 @@ import { useAppState, useAppDispatch } from "../../context/store";
 
 const Photo = () => {
     const dispatch = useAppDispatch();
-    const { currentPhoto } = useAppState();
+    const { currentPhoto, isLoading } = useAppState();
     const navigate = useNavigate();
     const { id } = useParams();
     const handleReturn = () => {
@@ -28,12 +28,12 @@ const Photo = () => {
             </header>
             <div className="container">
                 <div className="card-container">
-                    <h1>{currentPhoto ? currentPhoto.title : null}</h1>
+                    <h1>{!isLoading ? currentPhoto.title : null}</h1>
                     <img
-                        src={currentPhoto ? currentPhoto.photo : null}
+                        src={!isLoading ? currentPhoto.photo : null}
                         height="1000"
                     />
-                    <p>{currentPhoto ? currentPhoto.description : null}</p>
+                    <p>{!isLoading ? currentPhoto.description : null}</p>
                 </div>
             </div>
         </>

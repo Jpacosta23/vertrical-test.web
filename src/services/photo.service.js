@@ -32,11 +32,11 @@ const getPhotosByTitle = async (title) => {
                 "Content-Type": "application/json",
             },
         };
-
+        console.log(payload);
         const response = await fetch(`${API_URL_BASE}/photo`, payload);
-        const newUser = await response.json();
+        const photos = await response.json();
 
-        return newUser;
+        return photos;
     } catch (err) {
         throw Error("Photo not found");
     }

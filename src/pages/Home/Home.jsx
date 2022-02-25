@@ -1,23 +1,30 @@
 import "./Home.css";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { getPhotos } from "../../context/actions";
+import { getPhotos, getPhotosFilteredByTitle } from "../../context/actions";
+import Search from "../../components/Search/Search";
 import { useAppState, useAppDispatch } from "../../context/store";
 
 const Home = () => {
     const dispatch = useAppDispatch();
-    const { photos } = useAppState();
+    const { photos, isLoading } = useAppState();
+    const [ref, setCurrentRef] = useState("");
     const navigate = useNavigate();
     const handleRedirect = (photo) => {
         navigate(`/photo/${photo.id}`);
+    };
+    const handleSubmit = (evt) => {
+        evt.preventDefault();
+        getPhotosFilteredByTitle(dispatch, { title: ref });
     };
     useEffect(() => {
         getPhotos(dispatch);
     }, []);
     return (
         <div className="container">
+            <Search setCurrentRef={setCurrentRef} handleSubmit={handleSubmit} />
             <div className="main-container">
-                {photos.length
+                {!isLoading && photos.length
                     ? photos.map((photo) => {
                           return (
                               <div key={photo.id} className="photo-container">
