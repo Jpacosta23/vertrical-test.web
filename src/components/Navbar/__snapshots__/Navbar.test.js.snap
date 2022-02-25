@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Not Found component test matches snapshot 1`] = `
+<nav
+  className="navbar navbar-expand navbar-dark bg-dark"
+>
+  <a
+    className="navbar-brand"
+    href="/"
+  >
+    <img
+      className="image-logo"
+      height="40px"
+      src="https://vertrical.com/_next/image?url=%2Flogo.svg&w=256&q=75"
+    />
+  </a>
+</nav>
+`;

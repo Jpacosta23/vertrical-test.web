@@ -1,5 +1,6 @@
 import React from "react";
 import { Form, FormControl, Button } from "react-bootstrap";
+import PropTypes from "prop-types";
 import "./Search.css";
 
 const Search = ({ setCurrentRef = () => {}, handleSubmit = () => {} }) => {
@@ -31,6 +32,11 @@ const Search = ({ setCurrentRef = () => {}, handleSubmit = () => {} }) => {
             </Form>
         </>
     );
+};
+
+Search.propTypes = {
+    setCurrentRef: PropTypes.func,
+    handleSubmit: PropTypes.func,
 };
 
 export default Search;

@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Not Found component test matches snapshot 1`] = `
+<div
+  className="container"
+>
+  <div
+    id="notfound"
+  >
+    <div
+      className="notfound-404"
+    >
+      <h1 />
+    </div>
+    <h2 />
+    <button
+      data-testid="button"
+      id="exit-button"
+      onClick={[Function]}
+    >
+      <p>
+        Go Home
+      </p>
+    </button>
+  </div>
+</div>
+`;

@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import "./PhotoCard.css";
 
 const PhotoCard = ({ photo, handleRedirect = () => {} }) => {
@@ -31,6 +32,11 @@ const PhotoCard = ({ photo, handleRedirect = () => {} }) => {
             </div>
         </div>
     );
+};
+
+PhotoCard.propTypes = {
+    photo: PropTypes.object,
+    handleRedirect: PropTypes.func,
 };
 
 export default PhotoCard;

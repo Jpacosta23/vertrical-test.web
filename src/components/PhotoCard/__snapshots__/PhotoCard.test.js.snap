@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Not Found component test matches snapshot 1`] = `
+<div
+  className="photo-container"
+>
+  <div
+    className="photo-image-container"
+  >
+    <img
+      alt="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+      className="photo-image"
+      height="250"
+      src="https://i.picsum.photos/id/1027/2848/4272.jpg?hmac=EAR-f6uEqI1iZJjB6-NzoZTnmaX0oI0th3z8Y78UpKM"
+      width="200"
+    />
+  </div>
+  <div
+    className="description-container"
+  >
+    <button
+      className="btn-redirect"
+      onClick={[Function]}
+    >
+      profile
+    </button>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+    </p>
+    <button
+      className="btn-photo"
+      onClick={[Function]}
+      type="button"
+    >
+      Go to 
+      profile
+    </button>
+  </div>
+</div>
+`;
