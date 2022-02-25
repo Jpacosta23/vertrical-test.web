@@ -8,17 +8,24 @@ const Search = ({ setCurrentRef = () => {}, handleSubmit = () => {} }) => {
         setCurrentRef(value);
     };
 
+    const handleKeyPress = (e) => {
+        if (e.key === "enter") {
+            handleSubmit();
+        }
+    };
+
     return (
         <>
-            <Form className="d-flex col-lg-5 mt-4">
+            <Form className="d-flex col-lg-5 mt-4" onSubmit={handleSubmit}>
                 <FormControl
                     type="search"
                     placeholder="Search"
                     className="me-2"
                     aria-label="Search"
                     onChange={handleOnChange}
+                    onKeyDown={handleKeyPress}
                 />
-                <Button variant="outline-primary" onClick={handleSubmit}>
+                <Button type="submit" variant="outline-primary">
                     Search
                 </Button>
             </Form>

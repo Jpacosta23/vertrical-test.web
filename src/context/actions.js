@@ -1,4 +1,4 @@
-import { SET_LOADING, GET_PHOTOS, GET_PHOTO } from "./constants";
+import { SET_LOADING, GET_PHOTOS, GET_PHOTO, DELETE_PHOTO } from "./constants";
 import {
     getAllPhotos,
     getPhotoById,
@@ -39,4 +39,8 @@ export async function getPhotosFilteredByTitle(dispatch, title) {
     } finally {
         dispatch({ type: SET_LOADING, payload: false });
     }
+}
+
+export async function deleteCurrentPhoto(dispatch) {
+    dispatch({ type: DELETE_PHOTO, payload: {} });
 }

@@ -32,7 +32,6 @@ const getPhotosByTitle = async (title) => {
                 "Content-Type": "application/json",
             },
         };
-        console.log(payload);
         const response = await fetch(`${API_URL_BASE}/photo`, payload);
         const photos = await response.json();
 

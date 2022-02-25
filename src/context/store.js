@@ -1,6 +1,6 @@
 import React, { createContext, useReducer, useContext } from "react";
 
-import { GET_PHOTOS, SET_LOADING, GET_PHOTO } from "./constants";
+import { GET_PHOTOS, SET_LOADING, GET_PHOTO, DELETE_PHOTO } from "./constants";
 
 const AppStateContext = createContext();
 const AppDispatchContext = createContext();
@@ -20,6 +20,12 @@ function AppReducer(state, action) {
             };
         }
         case GET_PHOTO: {
+            return {
+                ...state,
+                currentPhoto: action.payload,
+            };
+        }
+        case DELETE_PHOTO: {
             return {
                 ...state,
                 currentPhoto: action.payload,

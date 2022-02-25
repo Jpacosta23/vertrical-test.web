@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 import { getPhotos, getPhotosFilteredByTitle } from "../../context/actions";
 import Search from "../../components/Search/Search";
 import { useAppState, useAppDispatch } from "../../context/store";
+import PhotoCard from "../../components/PhotoCard/PhotoCard";
+import NotFound from "../../components/NotFound/NotFound";
 
 const Home = () => {
     const dispatch = useAppDispatch();
@@ -24,39 +26,22 @@ const Home = () => {
         <div className="container">
             <Search setCurrentRef={setCurrentRef} handleSubmit={handleSubmit} />
             <div className="main-container">
-                {!isLoading && photos.length
-                    ? photos.map((photo) => {
-                          return (
-                              <div key={photo.id} className="photo-container">
-                                  <div className="photo-image-container">
-                                      <img
-                                          src={photo.photo}
-                                          alt={photo.short_description}
-                                          width="200"
-                                          height="250"
-                                          className="photo-image"
-                                      />
-                                  </div>
-                                  <div className="description-container">
-                                      <button
-                                          className="btn-redirect"
-                                          onClick={() => handleRedirect(photo)}
-                                      >
-                                          {photo.title}
-                                      </button>
-                                      <p>{photo.short_description}</p>
-                                      <button
-                                          type="button"
-                                          className="btn-photo"
-                                          onClick={() => handleRedirect(photo)}
-                                      >
-                                          Go to {photo.title}
-                                      </button>
-                                  </div>
-                              </div>
-                          );
-                      })
-                    : null}
+                {!isLoading && photos.length ? (
+                    photos.map((photo) => {
+                        return (
+                            <PhotoCard
+                                photo={photo}
+                                handleRedirect={handleRedirect}
+                            />
+                        );
+                    })
+                ) : (
+                    <NotFound
+                        status={photos.status}
+                        error={photos.error}
+                        showButton={false}
+                    />
+                )}
             </div>
         </div>
     );
