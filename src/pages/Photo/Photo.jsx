@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import './Photo.css';
-import { useNavigate, useLocation, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import goBack from '../../assets/Images/icons8-go-back-48.png';
 import { getPhotosById } from '../../context/actions';
 import { useAppState, useAppDispatch } from '../../context/store';

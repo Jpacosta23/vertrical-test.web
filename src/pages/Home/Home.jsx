@@ -27,8 +27,8 @@ const Home = () => {
       <Search setCurrentRef={setCurrentRef} handleSubmit={handleSubmit} />
       <div className="main-container">
         {!isLoading && photos.length ? (
-          photos.map((photo) => {
-            return <PhotoCard photo={photo} handleRedirect={handleRedirect} />;
+          photos.map((photo, id) => {
+            return <PhotoCard key={id} photo={photo} handleRedirect={handleRedirect} />;
           })
         ) : (
           <NotFound status={photos.status} error={photos.error} showButton={false} />
